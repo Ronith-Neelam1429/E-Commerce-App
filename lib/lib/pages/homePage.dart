@@ -1,11 +1,10 @@
-import 'package:e_commerce/components/currentLocation.dart';
-import 'package:e_commerce/components/descriptionBox.dart';
 import 'package:e_commerce/components/itemTile.dart';
 import 'package:e_commerce/components/my_drawer.dart';
 import 'package:e_commerce/components/sliverApp.dart';
 import 'package:e_commerce/components/tabBars.dart';
 import 'package:e_commerce/models/items.dart';
 import 'package:e_commerce/models/shop.dart';
+import 'package:e_commerce/pages/itemPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +52,8 @@ class _HomePageState extends State<HomePage>
           // return the tile
           return Itemtile(
             item: item,
-            onTap: () {},
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (contezt) => ItemPage(item: item))),
           );
         },
       );
@@ -71,17 +71,6 @@ class _HomePageState extends State<HomePage>
             title: CustomTabBar(tabController: _tabController),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Divider(
-                  indent: 25,
-                  endIndent: 25,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-                // my current location
-                CurrentLocation(),
-                // description box
-                DescriptionBox(),
-              ],
             ),
           )
         ],

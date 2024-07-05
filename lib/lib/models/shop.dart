@@ -1,3 +1,6 @@
+import 'package:collection/collection.dart';
+import 'package:e_commerce/models/cart_Item.dart';
+
 import 'items.dart';
 import 'package:flutter/material.dart';
 
@@ -265,6 +268,7 @@ class Shop extends ChangeNotifier {
       category: ItemCategory.jewlery,
       size: [
         Size(name: "Standard", price: 139.99),
+        Size(name: "Deluxe", price: 179.99),
       ],
     ),
     Items(
@@ -275,6 +279,7 @@ class Shop extends ChangeNotifier {
       category: ItemCategory.jewlery,
       size: [
         Size(name: "Standard", price: 210.99),
+        Size(name: "Deluxe", price: 260.99),
       ],
     ),
     Items(
@@ -285,6 +290,7 @@ class Shop extends ChangeNotifier {
       category: ItemCategory.jewlery,
       size: [
         Size(name: "Standard", price: 539.99),
+        Size(name: "Deluxe", price: 639.99),
       ],
     ),
     Items(
@@ -296,6 +302,7 @@ class Shop extends ChangeNotifier {
       category: ItemCategory.jewlery,
       size: [
         Size(name: "Standard", price: 799.99),
+        Size(name: "Deluxe", price: 899.99),
       ],
     ),
     Items(
@@ -307,6 +314,7 @@ class Shop extends ChangeNotifier {
       category: ItemCategory.jewlery,
       size: [
         Size(name: "Standard", price: 999.99),
+        Size(name: "Deluxe", price: 1099.99),
       ],
     ),
   ];
@@ -314,16 +322,84 @@ class Shop extends ChangeNotifier {
   // Getters
   List<Items> get menu => _menu;
 
-  // Operations
+/* Operations */
+
+  // User Cart
+  final List<CartItem> _cart = [];
+
   // Add to cart
+  void addToCart(Items item, List<Size> selectedSize) {
+    // Check if there is a cart item already with the same item and selected sizes
+    CartItem? cartItem = _cart.firstWhereOrNull((items) {
+      // Check if the cart items are the same
+      bool isSameItem = items.item == item;
+
+      // check if the list of selected sizes are the same
+      bool isSameSize =
+          ListEquality().equals(items.selectedSizes, selectedSize);
+
+      return isSameItem && isSameSize;
+    });
+
+    // if item already exists, increase it's quantity
+    if (cartItem != null) {
+      cartItem.quantity++;
+    }
+
+    // else, add a new item
+    else {
+      _cart.add(
+        CartItem(
+          item: item,
+          selectedSizes: selectedSize,
+        ),
+      );
+    }
+    notifyListeners();
+  }
 
   // remove from cart
+  void removeFromCart(CartItem cartItem) {
+    int cartIndex = _cart.indexOf(cartItem);
+
+    if (cartItem != -1) {
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+    notifyListeners();
+  }
 
   // get total price
+  double getTotalPrice() {
+    double total = 0.0;
+    for (CartItem cartItem in _cart) {
+      double itemTotal = cartItem.item.price;
+      for (Size size in cartItem.selectedSizes) {
+        itemTotal += size.price;
+      }
+      total += itemTotal * cartItem.quantity;
+    }
+    return total;
+  }
 
   // total number of items in a cart
+  int getTotalItemCount() {
+    int totalItemCount = 0;
+
+    for (CartItem cartItem in _cart) {
+      totalItemCount += cartItem.quantity;
+    }
+    return totalItemCount;
+  }
 
   // clear cart
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 
   // Helpers
   // Generate a receipt
