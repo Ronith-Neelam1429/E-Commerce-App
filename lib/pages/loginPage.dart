@@ -1,5 +1,6 @@
-import 'package:e_commerce/components/my_button.dart';
-import 'package:e_commerce/components/my_textField.dart';
+import 'package:e_commerce/components/button.dart';
+import 'package:e_commerce/components/textField.dart';
+import 'package:e_commerce/firebase/auth/authentication.dart';
 import 'package:e_commerce/pages/homePage.dart';
 import 'package:flutter/material.dart';
 
@@ -17,30 +18,36 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   // login method
- void login() {
-  // fill out authentication here
-
-  // navigate to the home screen
-  Navigator.push(
-    context, MaterialPageRoute(builder: (context) => const HomePage(),),
-  );
- }
+  void login() async {
+    // get instance
+    final _authService = Authentication();
+    try {
+      await _authService.signIn(emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body:  Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo 
+            // Logo
             const Icon(
-              Icons.lock_open_rounded, 
+              Icons.lock_open_rounded,
               size: 72,
             ),
             const SizedBox(height: 25),
-            
+
             // message. app slogan
             Text(
               "E-Commerce Delivery App",
@@ -52,34 +59,43 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 25),
 
             // email textfield
-            MyTextfield(controller: emailController, hintText: "Email", obscureText: false),
+            MyTextfield(
+                controller: emailController,
+                hintText: "Email",
+                obscureText: false),
             const SizedBox(height: 10),
             // password textfield
-            MyTextfield(controller: passwordController, hintText: "Password", obscureText: true),
+            MyTextfield(
+                controller: passwordController,
+                hintText: "Password",
+                obscureText: true),
             // sign in button
             const SizedBox(height: 25),
 
-            MyButton(onTap: () {
-              login();
-            }, text: "Sign In"),
+            MyButton(
+                onTap: () {
+                  login();
+                },
+                text: "Sign In"),
             // not a member? register now
             const SizedBox(height: 25),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member?", 
+                  "Not a member?",
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary),),
-                const SizedBox(width: 4,),
+                      color: Theme.of(context).colorScheme.inversePrimary),
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: const Text(
-                    "Register now", 
+                    "Register now",
                     style: TextStyle(
-                      color: Colors.blueAccent, 
-                      fontWeight: FontWeight.bold
-                    ),
+                        color: Colors.blueAccent, fontWeight: FontWeight.bold),
                   ),
                 )
               ],

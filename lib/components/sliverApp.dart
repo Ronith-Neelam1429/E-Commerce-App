@@ -1,3 +1,4 @@
+import 'package:e_commerce/pages/cartPage.dart';
 import 'package:flutter/material.dart';
 
 class SliverApp extends StatelessWidget {
@@ -16,7 +17,14 @@ class SliverApp extends StatelessWidget {
       actions: [
         // Shopping cart
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CartPage(),
+              ),
+            );
+          },
           icon: const Icon(Icons.shopping_cart),
         )
       ],

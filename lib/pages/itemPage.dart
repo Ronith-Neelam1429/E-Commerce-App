@@ -1,4 +1,4 @@
-import 'package:e_commerce/components/my_button.dart';
+import 'package:e_commerce/components/button.dart';
 import 'package:e_commerce/models/items.dart';
 import 'package:e_commerce/models/shop.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class _ItemPageState extends State<ItemPage> {
 
                       // Item Price
                       Text(
-                        '\$${widget.item.price}',
+                        '\$${widget.item.price.toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.primary,
@@ -108,7 +108,7 @@ class _ItemPageState extends State<ItemPage> {
                             return CheckboxListTile(
                               title: Text(sizes.name),
                               subtitle: Text(
-                                '\$${sizes.price}',
+                                '+\$${sizes.price.toStringAsFixed(2)}',
                                 style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary,
                                 ),

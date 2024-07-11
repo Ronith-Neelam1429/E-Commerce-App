@@ -8,29 +8,29 @@ class Shop extends ChangeNotifier {
   final List<Items> _menu = [
     // Shirts
     Items(
-      name: "Red Monster Truck T-shirt",
+      name: "Monster Truck Shirt",
       description:
           'A red monster struck t-shirt made out of cotton and synthetic material',
       imagePath: 'lib/images/shirts/monShirt.jpg',
       price: 4.99,
       category: ItemCategory.shirts,
       size: [
-        Size(name: "Small", price: 4.99),
-        Size(name: "Medium", price: 5.99),
-        Size(name: "Large", price: 6.99),
+        Size(name: "Small (Base Price)", price: 4.99),
+        Size(name: "Medium", price: 2.00),
+        Size(name: "Large", price: 3.00),
       ],
     ),
     Items(
-      name: "Blue Button Formal Shirt",
+      name: "Button Formal Shirt",
       description:
           'A blue button shirt for formal events. Made with 100% real cotton and plastic.',
       imagePath: 'lib/images/shirts/buttonUp.jpg',
       price: 14.99,
       category: ItemCategory.shirts,
       size: [
-        Size(name: "Small", price: 14.99),
-        Size(name: "Medium", price: 20.99),
-        Size(name: "Large", price: 26.99),
+        Size(name: "Small (Base Price)", price: 14.99),
+        Size(name: "Medium", price: 6.00),
+        Size(name: "Large", price: 8.00),
       ],
     ),
     Items(
@@ -40,7 +40,7 @@ class Shop extends ChangeNotifier {
       price: 15.99,
       category: ItemCategory.shirts,
       size: [
-        Size(name: "Small", price: 15.99),
+        Size(name: "Small (Base Price)", price: 15.99),
         Size(name: "Medium", price: 21.99),
         Size(name: "Large", price: 26.99),
       ],
@@ -53,7 +53,7 @@ class Shop extends ChangeNotifier {
       price: 35.99,
       category: ItemCategory.shirts,
       size: [
-        Size(name: "Small", price: 35.99),
+        Size(name: "Small (Base Price)", price: 35.99),
         Size(name: "Medium", price: 37.99),
         Size(name: "Large", price: 40.99),
       ],
@@ -65,7 +65,7 @@ class Shop extends ChangeNotifier {
       price: 9.99,
       category: ItemCategory.shirts,
       size: [
-        Size(name: "Small", price: 9.99),
+        Size(name: "Small (Base Price)", price: 9.99),
         Size(name: "Medium", price: 11.99),
         Size(name: "Large", price: 13.99),
       ],
@@ -78,7 +78,7 @@ class Shop extends ChangeNotifier {
       price: 15.99,
       category: ItemCategory.pants,
       size: [
-        Size(name: "Small", price: 10.99),
+        Size(name: "Small (Base Price)", price: 10.99),
         Size(name: "Medium", price: 15.99),
         Size(name: "Large", price: 19.99),
       ],
@@ -90,7 +90,7 @@ class Shop extends ChangeNotifier {
       price: 9.99,
       category: ItemCategory.pants,
       size: [
-        Size(name: "Small", price: 9.99),
+        Size(name: "Small (Base Price)", price: 9.99),
         Size(name: "Medium", price: 12.99),
         Size(name: "Large", price: 14.99),
       ],
@@ -102,7 +102,7 @@ class Shop extends ChangeNotifier {
       price: 25.99,
       category: ItemCategory.pants,
       size: [
-        Size(name: "Small", price: 25.99),
+        Size(name: "Small (Base Price)", price: 25.99),
         Size(name: "Medium", price: 30.99),
         Size(name: "Large", price: 33.99),
       ],
@@ -114,7 +114,7 @@ class Shop extends ChangeNotifier {
       price: 14.99,
       category: ItemCategory.pants,
       size: [
-        Size(name: "Small", price: 14.99),
+        Size(name: "Small (Base Price)", price: 14.99),
         Size(name: "Medium", price: 17.99),
         Size(name: "Large", price: 20.99),
       ],
@@ -127,7 +127,7 @@ class Shop extends ChangeNotifier {
       price: 10.99,
       category: ItemCategory.pants,
       size: [
-        Size(name: "Small", price: 10.99),
+        Size(name: "Small (Base Price)", price: 10.99),
         Size(name: "Medium", price: 13.99),
         Size(name: "Large", price: 15.99),
       ],
@@ -141,7 +141,7 @@ class Shop extends ChangeNotifier {
       price: 39.99,
       category: ItemCategory.shoes,
       size: [
-        Size(name: "Small", price: 39.99),
+        Size(name: "Small (Base Price)", price: 39.99),
         Size(name: "Medium", price: 42.99),
         Size(name: "Large", price: 44.99),
       ],
@@ -153,7 +153,7 @@ class Shop extends ChangeNotifier {
       price: 189.99,
       category: ItemCategory.shoes,
       size: [
-        Size(name: "Small", price: 189.99),
+        Size(name: "Small (Base Price)", price: 189.99),
         Size(name: "Medium", price: 194.99),
         Size(name: "Large", price: 199.99),
       ],
@@ -166,7 +166,7 @@ class Shop extends ChangeNotifier {
       price: 39.99,
       category: ItemCategory.shoes,
       size: [
-        Size(name: "Small", price: 39.99),
+        Size(name: "Small (Base Price)", price: 39.99),
         Size(name: "Medium", price: 44.99),
         Size(name: "Large", price: 49.99),
       ],
@@ -179,7 +179,7 @@ class Shop extends ChangeNotifier {
       price: 39.99,
       category: ItemCategory.shoes,
       size: [
-        Size(name: "Small", price: 39.99),
+        Size(name: "Small (Base Price)", price: 39.99),
         Size(name: "Medium", price: 45.99),
         Size(name: "Large", price: 48.99),
       ],
@@ -191,7 +191,7 @@ class Shop extends ChangeNotifier {
       price: 54.99,
       category: ItemCategory.shoes,
       size: [
-        Size(name: "Small", price: 54.99),
+        Size(name: "Small (Base Price)", price: 54.99),
         Size(name: "Medium", price: 59.99),
         Size(name: "Large", price: 64.99),
       ],
@@ -204,7 +204,7 @@ class Shop extends ChangeNotifier {
       price: 15.99,
       category: ItemCategory.hats,
       size: [
-        Size(name: "Small", price: 15.99),
+        Size(name: "Small (Base Price)", price: 15.99),
         Size(name: "Medium", price: 18.99),
         Size(name: "Large", price: 21.99),
       ],
@@ -216,7 +216,7 @@ class Shop extends ChangeNotifier {
       price: 49.99,
       category: ItemCategory.hats,
       size: [
-        Size(name: "Small", price: 49.99),
+        Size(name: "Small (Base Price)", price: 49.99),
         Size(name: "Medium", price: 54.99),
         Size(name: "Large", price: 59.99),
       ],
@@ -228,7 +228,7 @@ class Shop extends ChangeNotifier {
       price: 19.99,
       category: ItemCategory.hats,
       size: [
-        Size(name: "Small", price: 19.99),
+        Size(name: "Small (Base Price)", price: 19.99),
         Size(name: "Medium", price: 23.99),
         Size(name: "Large", price: 27.99),
       ],
@@ -240,7 +240,7 @@ class Shop extends ChangeNotifier {
       price: 39.99,
       category: ItemCategory.hats,
       size: [
-        Size(name: "Small", price: 9.99),
+        Size(name: "Small (Base Price)", price: 9.99),
         Size(name: "Medium", price: 12.99),
         Size(name: "Large", price: 14.99),
       ],
@@ -253,7 +253,7 @@ class Shop extends ChangeNotifier {
       price: 19.99,
       category: ItemCategory.hats,
       size: [
-        Size(name: "Small", price: 19.99),
+        Size(name: "Small (Base Price)", price: 19.99),
         Size(name: "Medium", price: 23.99),
         Size(name: "Large", price: 26.99),
       ],
@@ -283,7 +283,7 @@ class Shop extends ChangeNotifier {
       ],
     ),
     Items(
-      name: "Womens Diamond Necklace",
+      name: "Diamond Necklace",
       description: 'Womens diamond necklace. The diamond was mined with minors',
       imagePath: 'lib/images/jewlery/diaNecklace.jpeg',
       price: 539.99,
@@ -309,7 +309,7 @@ class Shop extends ChangeNotifier {
       name: "Gold Wedding Ring",
       description:
           'A gold wedding ring with 99.99% pure gold and a polished diamond.',
-      imagePath: 'lib/images/jewlery/bracelet.jpeg',
+      imagePath: 'lib/images/jewlery/goldRing.jpeg',
       price: 999.99,
       category: ItemCategory.jewlery,
       size: [
@@ -321,6 +321,7 @@ class Shop extends ChangeNotifier {
 
   // Getters
   List<Items> get menu => _menu;
+  List<CartItem> get cart => _cart;
 
 /* Operations */
 
